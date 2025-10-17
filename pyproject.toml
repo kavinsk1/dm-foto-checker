@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "dm-foto-checker"
+version = "0.1.0"
+description = "Automates fetching order statuses from the Fotoparadies / dm photo service backend API"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "check_orders.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.31.0"
+prettytable = "^3.9.0"
+
+[tool.poetry.scripts]
+check-orders = "check_orders:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
