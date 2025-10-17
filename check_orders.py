@@ -31,27 +31,22 @@ HEADERS = {
 REQUEST_DELAY = 0.6  # seconds between requests
 
 # === Emoji mapping for order statuses ===
+# TODO: Add actual mapping for all possible status codes, this is just assumed for now
 STATUS_EMOJIS = {
     "PROCESSING": "🚀",
-    "wird gefertigt": "🚀",
-    "In Produktion": "🚀",
-    "Produktion": "🚀",
     "SHIPPED": "📦",
-    "Versandt": "📦",
     "COMPLETED": "✅",
-    "Abgeschlossen": "✅",
     "CANCELLED": "❌",
-    "Storniert": "❌",
     "Fehler": "⚠️",
     "Unknown": "❓",
 }
 
-def add_status_emoji(status: str) -> str:
+def add_status_emoji(status_code: str, status_text: str) -> str:
     """Attach an emoji to a status text."""
     for key, emoji in STATUS_EMOJIS.items():
-        if key.lower() in status.lower():
-            return f"{emoji} {status}"
-    return f"❓ {status}"
+        if key.lower() in status_code.lower():
+            return f"{emoji} {status_text}"
+    return f"❓ {status_code}"
 
 
 def fetch_order_status(order_number: str, shop_number: str):
@@ -73,7 +68,7 @@ def fetch_order_status(order_number: str, shop_number: str):
         if not status_text:
             status_text = status_code or "Unknown"
         
-        return add_status_emoji(status_text)
+        return add_status_emoji(status_code, status_text)
     except Exception as e:
         return f"⚠️ Error: {str(e)}"
 

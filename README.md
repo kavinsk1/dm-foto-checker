@@ -20,8 +20,8 @@ Maybe it will be useful for you too.
 
 ## Requirements
 
-- **Python 3.8+**
-- **Poetry** (recommended) or pip
+- **Python**
+- **Poetry** 
 
 ### Installation with Poetry (Recommended)
 
@@ -53,8 +53,6 @@ project_root/
 │   ├── berlin_orders.csv
 │   ├── munich_orders.csv
 │   └── test_orders.csv
-│
-└── order_status_results.json     # Output generated after running the script
 ```
 
 ---
@@ -101,7 +99,7 @@ The script will:
 ## Example Output
 
 ```
-📂 Processing file: test_orders.csv
+Processing file: test_orders.csv
 Fetched 112344525 (Berlin_1): In Produktion
 Fetched 112344526 (Berlin_2): Versandt
 Fetched 112344527 (Berlin_3): Abgeschlossen
@@ -117,7 +115,6 @@ Fetched 112344527 (Berlin_3): Abgeschlossen
 | 112344527    | 112344      | Berlin_3   | Abgeschlossen   |
 +--------------+-------------+------------+-----------------+
 
-💾 Results saved to 'order_status_results.json'
 ```
 
 ---
@@ -139,3 +136,4 @@ You can adjust a few constants inside the script:
 
 This project is provided “as-is” for personal use.  
 It’s not affiliated with or endorsed by **Fotoparadies** or **dm**.
+If you're working for dm or photoprintit, please don't sue me, this isn't gonna hurt you 🙂
