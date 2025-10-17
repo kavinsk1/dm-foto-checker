@@ -46,7 +46,7 @@ pip install requests prettytable
 ```
 project_root/
 │
-├── fotoparadies_status.py        # Main script
+├── check_orders.py               # Main script
 ├── README.md                     # (this file)
 │
 ├── orders/                       # Folder containing your CSV input files
