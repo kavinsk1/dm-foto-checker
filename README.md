@@ -13,12 +13,8 @@ Maybe it will be useful for you too.
 ##  Features
 
 - Reads all `.csv` files from a local `orders/` folder  
-- Supports the input format:
-  ```
-  order_number,shop_number,Identifier
-  ```
-- Queries Fotoparadies API (`spot.photoprintit.com/spotapi/orderInfo/forShop`)
-- Prints grouped tables (one per CSV file)
+- Queries Fotoparadies API for real-time order status
+- Displays results in clean, grouped tables
 
 ---
 
@@ -83,30 +79,26 @@ order_number,shop_number,Identifier
 
 ---
 
-## ▶️ How to Run
-
-### With Poetry
+## How to Run
 
 ```bash
+# Install dependencies
+poetry install
+
+# Run the checker
 poetry run check-orders
-```
-
-### With Python directly
-
-```bash
-python check_orders.py
 ```
 
 The script will:
 
-1. Look inside the `orders/` folder.
-2. Process all `.csv` files it finds.
-3. Fetch each order’s status from Fotoparadies.
-4. Display tables of results grouped by file.
+1. Look inside the `orders/` folder
+2. Process all `.csv` files it finds
+3. Fetch each order's status from Fotoparadies
+4. Display tables of results grouped by file
 
 ---
 
-## 📊 Example Output
+## Example Output
 
 ```
 📂 Processing file: test_orders.csv
