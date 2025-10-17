@@ -63,17 +63,21 @@ Each CSV file in the `orders/` folder must contain **three columns**:
 
 | Column Name    | Description                                        |
 |----------------|----------------------------------------------------|
-| `order_number` | Fotoparadies order number (e.g. 112344525)         |
+| `order_number` | Fotoparadies order number (e.g. 112344525)         | 
 | `shop_number`  | dm shop number (e.g. 112344)                       |
 | `Identifier`   | Any label or identifier you want (e.g. “Berlin_1”) |
+
+**Note:** If you already have the full order number in the format `shop_number-order_number` (e.g., "112344-112344525"), you can put it directly in the `order_number` column. The script will automatically detect and use it without reconstructing it from the individual order and shop numbers.
 
 ### Example: `orders/test_orders.csv`
 ```csv
 order_number,shop_number,Identifier
 112344525,112344,Berlin_1
 112344526,112344,Berlin_2
-112344527,112344,Berlin_3
+112344-112345,112344,Berlin_3
 ```
+
+In the example above, the third row uses the full order number format directly.
 
 ---
 

@@ -51,7 +51,11 @@ def add_status_emoji(status_code: str, status_text: str) -> str:
 
 def fetch_order_status(order_number: str, shop_number: str):
     """Fetch order status for a single order."""
-    full_order_id = f"{shop_number}-{order_number}"
+    # Check if order_number is already in full format (e.g., "123456-123456")
+    if "-" in order_number and len(order_number.replace("-", "")) == 12:
+        full_order_id = order_number
+    else:
+        full_order_id = f"{shop_number}-{order_number}"
     params = {
         "config": CONFIG_ID,
         "fullOrderId": full_order_id,
@@ -81,13 +85,13 @@ def process_csv_file(file_path):
         for row in reader:
             order = row["order_number"].strip()
             shop = row["shop_number"].strip()
-            ident = row.get("Identifier", "").strip()
+            ident = row.get("identifier", "").strip()
 
             status = fetch_order_status(order, shop)
             results.append({
                 "order_number": order,
                 "shop_number": shop,
-                "Identifier": ident,
+                "identifier": ident,
                 "status": status
             })
         
@@ -115,7 +119,7 @@ def main():
     for filename, results in all_results.items():
         table = PrettyTable(["Order Number", "Shop Number", "Identifier", "Status"])
         for r in results:
-            table.add_row([r["order_number"], r["shop_number"], r["Identifier"], r["status"]])
+            table.add_row([r["order_number"], r["shop_number"], r["identifier"], r["status"]])
         print(f"\n=== {filename} ===")
         print(table)
 
