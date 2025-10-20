@@ -9,7 +9,6 @@ from prettytable import PrettyTable
 ORDERS_DIR = "orders"  # folder containing CSV input files
 BASE_URL = "https://spot.photoprintit.com/spotapi/orderInfo/order"
 CONFIG_ID = "1320"
-OUTPUT_FILE = "order_status_results.json"
 
 HEADERS = {
     "Accept": "application/json, text/plain, */*",
@@ -33,7 +32,7 @@ REQUEST_DELAY = 0.6  # seconds between requests
 # === Emoji mapping for order statuses ===
 # TODO: Add actual mapping for all possible status codes, this is just assumed for now
 STATUS_EMOJIS = {
-    "PROCESSING": "🚀",
+    "PROCESSING": "🏭",
     "SHIPPED": "📦",
     "COMPLETED": "✅",
     "CANCELLED": "❌",
@@ -46,7 +45,10 @@ def add_status_emoji(status_code: str, status_text: str) -> str:
     for key, emoji in STATUS_EMOJIS.items():
         if key.lower() in status_code.lower():
             return f"{emoji} {status_text}"
-    return f"❓ {status_code}"
+    
+    # Log unmapped status codes for debugging
+    print(f"⚠️  Unmapped status_code: '{status_code}'")
+    return f"❓ {status_text}"
 
 
 def fetch_order_status(order_number: str, shop_number: str):
