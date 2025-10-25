@@ -1,5 +1,10 @@
 # CSV order files (personal data)
-orders/*.csv
+# Ignore everything in orders/ except the template
+orders/*
+!orders/orders_template.csv
+
+# Downloaded photos
+downloads/*
 
 # Python
 __pycache__/
@@ -42,6 +47,7 @@ poetry.lock
 *.swo
 *~
 .DS_Store
+.editorconfig
 
 # Testing
 .pytest_cache/

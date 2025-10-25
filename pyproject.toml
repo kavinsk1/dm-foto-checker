@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "dm-foto-checker"
-version = "0.1.0"
-description = "Automates fetching order statuses from the Fotoparadies / dm photo service backend API"
+version = "0.2.0"
+description = "Check order statuses and automatically download digital photos from Fotoparadies / dm photo service"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "check_orders.py"}]
+packages = [{include = "check_orders.py"}, {include = "downloader.py"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
